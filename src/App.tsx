@@ -688,7 +688,7 @@ export default function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
-      if (user?.email !== import.meta.env.VITE_ADMIN_EMAIL || !user?.emailVerified) {
+      if (user?.email !== "lumaphotographstudio@gmail.com" || !user?.emailVerified) {
         setIsAdminView(false);
       }
     });
@@ -697,7 +697,7 @@ export default function App() {
 
   useEffect(() => {
     if (currentPath === '/adminlogin') {
-      if (user?.email === import.meta.env.VITE_ADMIN_EMAIL && user?.emailVerified) {
+      if (user?.email === "lumaphotographstudio@gmail.com" && user?.emailVerified) {
         setIsAdminView(true);
       }
     } else {
@@ -710,9 +710,9 @@ export default function App() {
     setLoginError(null);
     try {
       const result = await signInWithPopup(auth, provider);
-      if (result.user.email === import.meta.env.VITE_ADMIN_EMAIL && result.user.emailVerified) {
+      if (result.user.email === "lumaphotographstudio@gmail.com" && result.user.emailVerified) {
         setIsAdminView(true);
-      } else if (result.user.email === import.meta.env.VITE_ADMIN_EMAIL && !result.user.emailVerified) {
+      } else if (result.user.email === "lumaphotographstudio@gmail.com" && !result.user.emailVerified) {
         setLoginError("Access Denied: Please verify your email address.");
         await signOut(auth);
       } else {
@@ -736,7 +736,7 @@ export default function App() {
     setCurrentPath('/');
   };
 
-  if (currentPath === '/adminlogin' && (!user || user.email !== import.meta.env.VITE_ADMIN_EMAIL || !user.emailVerified)) {
+  if (currentPath === '/adminlogin' && (!user || user.email !== "lumaphotographstudio@gmail.com" || !user.emailVerified)) {
     return (
       <ErrorBoundary>
         <div className={`min-h-screen flex items-center justify-center p-8 bg-[var(--bg)] ${isDarkMode ? "" : "light"}`}>
@@ -774,7 +774,7 @@ export default function App() {
     );
   }
 
-  if (isAdminView && user?.email === import.meta.env.VITE_ADMIN_EMAIL && user?.emailVerified) {
+  if (isAdminView && user?.email === "lumaphotographstudio@gmail.com" && user?.emailVerified) {
     return (
       <ErrorBoundary>
         <div className={isDarkMode ? "" : "light"}>
