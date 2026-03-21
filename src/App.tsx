@@ -12,7 +12,7 @@ import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, delete
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
 
 // Import images from assets
-import lumaBranding from "./assets/1000276309.jpg.jpeg";
+import engagement from "./assets/1000276309.jpg.jpeg";
 import warmEmbrace from "./assets/MRJ_9448_resize.JPG.jpeg";
 import traditionalGrace from "./assets/MRJ_9325_resize.JPG.jpeg";
 import warmLove from "./assets/MRJ_9572_resize.JPG.jpeg";
@@ -171,7 +171,7 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const images = [
-    { url: lumaBranding, title: "Luma Branding", category: "Studio" },
+    { url: engagement, title: "Engagement", category: "Engagement" },
     { url: warmEmbrace, title: "Warm Embrace", category: "Portrait" },
     { url: traditionalGrace, title: "Traditional Grace", category: "Wedding" },
     { url: warmLove, title: "warm love", category: "Wedding" },
@@ -192,13 +192,13 @@ const Gallery = () => {
             <p className="text-[var(--accent)] max-w-md">Capturing the essence of moments through a cinematic lens. Our portfolio spans across diverse genres of visual storytelling.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            {['All', 'Studio', 'Portrait', 'Wedding'].map((cat) => (
+            {['All', 'Engagement', 'Portrait', 'Wedding'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`text-[10px] uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300 border ${activeCategory === cat
-                    ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)]"
-                    : "bg-transparent text-[var(--fg)] border-[var(--fg)]/20 hover:border-[var(--accent)]/50"
+                  ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)]"
+                  : "bg-transparent text-[var(--fg)] border-[var(--fg)]/20 hover:border-[var(--accent)]/50"
                   }`}
               >
                 {cat}
