@@ -12,10 +12,10 @@ import { collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, delete
 import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User as FirebaseUser } from "firebase/auth";
 
 // Import images from assets
-import lumaBranding from "./assets/luma-branding.jpeg";
-import warmEmbrace from "./assets/warm-embrace.jpeg";
-import traditionalGrace from "./assets/traditional-grace.jpeg";
-import warmLove from "./assets/warm-love.jpeg";
+import lumaBranding from "./assets/1000276309.jpg.jpeg";
+import warmEmbrace from "./assets/MRJ_9448_resize.JPG.jpeg";
+import traditionalGrace from "./assets/MRJ_9325_resize.JPG.jpeg";
+import warmLove from "./assets/MRJ_9572_resize.JPG.jpeg";
 import timelessMoments from "./assets/timeless-moments.jpeg";
 import templeVows from "./assets/temple-vows.jpeg";
 
@@ -64,11 +64,11 @@ class ErrorBoundary extends React.Component<any, any> {
             <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
             <h2 className="text-2xl font-serif mb-4 text-[var(--fg)]">Something went wrong</h2>
             <p className="text-[var(--accent)] text-sm mb-6">
-              {this.state.error?.message.startsWith('{') 
+              {this.state.error?.message.startsWith('{')
                 ? "A database error occurred. Please try again later."
                 : this.state.error?.message || "An unexpected error occurred."}
             </p>
-            <button 
+            <button
               onClick={() => window.location.reload()}
               className="px-8 py-3 bg-[var(--accent)] text-[var(--bg)] rounded-full text-xs uppercase tracking-widest font-bold hover:bg-[var(--accent-muted)] transition-colors"
             >
@@ -85,7 +85,7 @@ class ErrorBoundary extends React.Component<any, any> {
 
 const Navbar = ({ isDarkMode, onToggleTheme }: { isDarkMode: boolean; onToggleTheme: () => void }) => {
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 glass"
@@ -101,14 +101,14 @@ const Navbar = ({ isDarkMode, onToggleTheme }: { isDarkMode: boolean; onToggleTh
         <a href="#contact" className="hover:text-[var(--fg)] transition-colors">Contact</a>
       </div>
       <div className="flex items-center gap-4">
-        <button 
+        <button
           onClick={onToggleTheme}
           className="p-2 rounded-full hover:bg-[var(--fg)]/10 transition-colors"
           aria-label="Toggle Theme"
         >
           {isDarkMode ? <Sun className="w-5 h-5 text-white" /> : <Moon className="w-5 h-5 text-black" />}
         </button>
-        <button 
+        <button
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           className="px-6 py-2 border border-[var(--fg)]/20 rounded-full text-xs uppercase tracking-widest hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-all duration-300"
         >
@@ -125,13 +125,13 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <motion.div 
+      <motion.div
         style={{ y: y1 }}
         className="absolute inset-0 z-0"
       >
-        <img 
-          src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&q=80&w=2000" 
-          alt="Cinematic Landscape" 
+        <img
+          src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&q=80&w=2000"
+          alt="Cinematic Landscape"
           className="w-full h-full object-cover opacity-40"
           referrerPolicy="no-referrer"
         />
@@ -153,7 +153,7 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
@@ -169,7 +169,7 @@ const Hero = () => {
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  
+
   const images = [
     { url: lumaBranding, title: "Luma Branding", category: "Studio" },
     { url: warmEmbrace, title: "Warm Embrace", category: "Portrait" },
@@ -179,8 +179,8 @@ const Gallery = () => {
     { url: templeVows, title: "Temple Vows", category: "Wedding" },
   ];
 
-  const filteredImages = activeCategory === "All" 
-    ? images 
+  const filteredImages = activeCategory === "All"
+    ? images
     : images.filter(img => img.category === activeCategory);
 
   return (
@@ -193,14 +193,13 @@ const Gallery = () => {
           </div>
           <div className="flex flex-wrap gap-3">
             {['All', 'Studio', 'Portrait', 'Wedding'].map((cat) => (
-              <button 
-                key={cat} 
+              <button
+                key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-[10px] uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300 border ${
-                  activeCategory === cat 
-                    ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)]" 
+                className={`text-[10px] uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300 border ${activeCategory === cat
+                    ? "bg-[var(--accent)] text-[var(--bg)] border-[var(--accent)]"
                     : "bg-transparent text-[var(--fg)] border-[var(--fg)]/20 hover:border-[var(--accent)]/50"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -208,13 +207,13 @@ const Gallery = () => {
           </div>
         </div>
 
-        <motion.div 
+        <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredImages.map((img) => (
-              <motion.div 
+              <motion.div
                 layout
                 key={img.url}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -223,19 +222,19 @@ const Gallery = () => {
                 transition={{ duration: 0.4 }}
                 className="group relative aspect-[4/5] overflow-hidden rounded-2xl cursor-pointer bg-[var(--fg)]/5"
               >
-              <img 
-                src={img.url} 
-                alt={img.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="eager"
-                referrerPolicy="no-referrer"
-                onError={(e) => console.error(`Failed to load image: ${img.url}`, e)}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 z-20">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--accent)] mb-2">{img.category}</span>
-                <h3 className="text-xl font-serif text-[var(--fg)]">{img.title}</h3>
-              </div>
-            </motion.div>
+                <img
+                  src={img.url}
+                  alt={img.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="eager"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => console.error(`Failed to load image: ${img.url}`, e)}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 z-20">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-[var(--accent)] mb-2">{img.category}</span>
+                  <h3 className="text-xl font-serif text-[var(--fg)]">{img.title}</h3>
+                </div>
+              </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -255,7 +254,7 @@ const Services = () => {
     <section id="services" className="py-32 px-8 glass border-y border-[var(--fg)]/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
         {services.map((s, idx) => (
-          <motion.div 
+          <motion.div
             key={idx}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -268,7 +267,7 @@ const Services = () => {
             </div>
             <h3 className="text-2xl font-serif text-[var(--fg)]">{s.title}</h3>
             <p className="text-[var(--accent)] leading-relaxed text-sm">{s.desc}</p>
-            <button 
+            <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[var(--fg)] group"
             >
@@ -293,7 +292,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    
+
     try {
       const submissionsRef = collection(db, 'submissions');
       await addDoc(submissionsRef, {
@@ -319,7 +318,7 @@ const Contact = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-        
+
         if (!emailRes.ok) {
           const errorData = await emailRes.json();
           console.error("Email notification failed server-side:", errorData.error);
@@ -347,7 +346,7 @@ const Contact = () => {
         <div>
           <h2 className="text-5xl font-serif mb-8 text-gradient">Let's Create<br />Something Timeless</h2>
           <p className="text-[var(--accent-muted)] mb-12 max-w-md">Ready to capture your next memory? Get in touch for bookings, collaborations, or just to say hello.</p>
-          
+
           <div className="space-y-6">
             <div className="flex items-center gap-4 text-[var(--accent)]">
               <Mail className="w-5 h-5" />
@@ -370,17 +369,17 @@ const Contact = () => {
           </div>
 
           <div className="flex gap-6 mt-12">
-            <a 
-              href="https://www.instagram.com/_lumaphotography_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
-              target="_blank" 
+            <a
+              href="https://www.instagram.com/_lumaphotography_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[var(--fg)]/10 flex items-center justify-center hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-all"
             >
               <Instagram className="w-4 h-4" />
             </a>
-            <a 
-              href="https://wa.me/919361914997" 
-              target="_blank" 
+            <a
+              href="https://wa.me/919361914997"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full border border-[var(--fg)]/10 flex items-center justify-center hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-all"
             >
@@ -392,7 +391,7 @@ const Contact = () => {
         <div className="relative">
           <AnimatePresence mode="wait">
             {status === 'success' ? (
-              <motion.div 
+              <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -404,7 +403,7 @@ const Contact = () => {
                 <p className="text-[var(--accent)] text-sm">Thank you for reaching out. We'll get back to you shortly to discuss your vision.</p>
               </motion.div>
             ) : (
-              <motion.form 
+              <motion.form
                 key="form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -415,30 +414,30 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--accent-muted)]">Name</label>
-                    <input 
+                    <input
                       required
-                      type="text" 
+                      type="text"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors text-[var(--fg)]" 
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors text-[var(--fg)]"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-[var(--accent-muted)]">Email</label>
-                    <input 
+                    <input
                       required
-                      type="email" 
+                      type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors text-[var(--fg)]" 
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors text-[var(--fg)]"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest text-[var(--accent-muted)]">Service</label>
-                  <select 
+                  <select
                     value={formData.service}
-                    onChange={(e) => setFormData({...formData, service: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors appearance-none text-[var(--fg)]"
                   >
                     <option className="bg-[var(--bg)] text-[var(--fg)]">Commercial</option>
@@ -449,15 +448,15 @@ const Contact = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest text-[var(--accent-muted)]">Message</label>
-                  <textarea 
+                  <textarea
                     required
-                    rows={4} 
+                    rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors resize-none text-[var(--fg)]" 
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full bg-transparent border-b border-[var(--accent)]/20 py-2 focus:border-[var(--accent)] outline-none transition-colors resize-none text-[var(--fg)]"
                   />
                 </div>
-                <button 
+                <button
                   disabled={status === 'submitting'}
                   className="w-full py-4 bg-[var(--accent)] text-[var(--bg)] text-xs uppercase tracking-[0.3em] font-bold rounded-full hover:bg-[var(--accent-muted)] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                 >
@@ -490,15 +489,15 @@ const About = () => {
           viewport={{ once: true }}
           className="relative aspect-[4/5] rounded-3xl overflow-hidden"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=1000" 
-            alt="Photographer at work" 
+          <img
+            src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80&w=1000"
+            alt="Photographer at work"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/60 to-transparent" />
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -563,7 +562,7 @@ const AdminDashboard = ({ user, onLogout }: { user: FirebaseUser; onLogout: () =
             <h1 className="text-4xl font-serif mb-2">Admin Dashboard</h1>
             <p className="text-[var(--accent-muted)] text-sm">Welcome back, {user.displayName}</p>
           </div>
-          <button 
+          <button
             onClick={onLogout}
             className="flex items-center gap-2 px-6 py-2 bg-[var(--fg)]/5 hover:bg-[var(--fg)]/10 border border-[var(--glass-border)] rounded-full transition-colors text-xs uppercase tracking-widest text-[var(--fg)]"
           >
@@ -583,7 +582,7 @@ const AdminDashboard = ({ user, onLogout }: { user: FirebaseUser; onLogout: () =
         ) : (
           <div className="grid gap-6">
             {submissions.map((sub) => (
-              <motion.div 
+              <motion.div
                 key={sub.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -613,13 +612,13 @@ const AdminDashboard = ({ user, onLogout }: { user: FirebaseUser; onLogout: () =
                   <div className="flex md:flex-col justify-end gap-2">
                     {deleteId === sub.id ? (
                       <div className="flex flex-col gap-2">
-                        <button 
+                        <button
                           onClick={() => handleDelete(sub.id)}
                           className="px-4 py-2 bg-red-500 text-white text-[10px] uppercase tracking-widest rounded-xl font-bold"
                         >
                           Confirm
                         </button>
-                        <button 
+                        <button
                           onClick={() => setDeleteId(null)}
                           className="px-4 py-2 bg-white/10 text-white text-[10px] uppercase tracking-widest rounded-xl"
                         >
@@ -627,7 +626,7 @@ const AdminDashboard = ({ user, onLogout }: { user: FirebaseUser; onLogout: () =
                         </button>
                       </div>
                     ) : (
-                      <button 
+                      <button
                         onClick={() => setDeleteId(sub.id)}
                         className="p-3 bg-red-500/10 hover:bg-red-500/20 text-red-500 rounded-2xl transition-colors"
                         title="Delete Submission"
@@ -656,7 +655,7 @@ const Footer = () => {
       <p className="text-[10px] uppercase tracking-widest text-[var(--accent-muted)] mb-4 opacity-60">
         © 2026 Luma Photography. All rights reserved.
       </p>
-      <button 
+      <button
         onClick={() => {
           window.history.pushState({}, '', '/adminlogin');
           window.dispatchEvent(new PopStateEvent('popstate'));
@@ -744,7 +743,7 @@ export default function App() {
             <Camera className="w-12 h-12 text-[var(--fg)] mx-auto mb-6" />
             <h2 className="text-3xl font-serif mb-4 text-[var(--fg)]">Admin Portal</h2>
             <p className="text-[var(--accent)] text-sm mb-8">Please sign in with your authorized account to access the dashboard.</p>
-            
+
             {loginError && (
               <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl text-xs flex items-center gap-3">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -752,14 +751,14 @@ export default function App() {
               </div>
             )}
 
-            <button 
+            <button
               onClick={handleAdminLogin}
               className="w-full py-4 bg-[var(--fg)] text-[var(--bg)] text-xs uppercase tracking-[0.3em] font-bold rounded-full hover:opacity-80 transition-colors flex items-center justify-center gap-3"
             >
               <User className="w-4 h-4" /> Sign In with Google
             </button>
-            
-            <button 
+
+            <button
               onClick={() => {
                 window.history.pushState({}, '', '/');
                 window.dispatchEvent(new PopStateEvent('popstate'));
@@ -788,11 +787,11 @@ export default function App() {
     <ErrorBoundary>
       <div className={`min-h-screen selection:bg-[var(--accent)] selection:text-[var(--bg)] ${isDarkMode ? "" : "light"}`}>
         <div className="atmosphere" />
-        <Navbar 
+        <Navbar
           isDarkMode={isDarkMode}
           onToggleTheme={() => setIsDarkMode(!isDarkMode)}
         />
-        
+
         {loginError && (
           <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[60] bg-red-500/10 border border-red-500/20 text-red-500 px-6 py-3 rounded-full text-xs uppercase tracking-widest backdrop-blur-md flex items-center gap-3">
             <AlertCircle className="w-4 h-4" />
